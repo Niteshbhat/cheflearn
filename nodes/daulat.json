@@ -13,7 +13,7 @@
         "model": "63",
         "model_name": "Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz",
         "stepping": "2",
-        "mhz": "2400.058",
+        "mhz": "2400.098",
         "cache_size": "30720 KB",
         "physical_id": "0",
         "core_id": "0",
@@ -89,12 +89,12 @@
       "by_device": {
         "/dev/xvda1": {
           "kb_size": "20960236",
-          "kb_used": "6476596",
-          "kb_available": "14483640",
+          "kb_used": "6478620",
+          "kb_available": "14481616",
           "percent_used": "31%",
           "total_inodes": "20970432",
-          "inodes_used": "143602",
-          "inodes_available": "20826830",
+          "inodes_used": "143772",
+          "inodes_available": "20826660",
           "inodes_percent_used": "1%",
           "fs_type": "xfs",
           "mount_options": [
@@ -224,19 +224,19 @@
             "nodev",
             "noexec",
             "relatime",
-            "memory"
+            "cpuset"
           ],
           "mounts": [
             "/sys/fs/cgroup/systemd",
             "/sys/fs/cgroup/devices",
-            "/sys/fs/cgroup/perf_event",
-            "/sys/fs/cgroup/cpuset",
-            "/sys/fs/cgroup/net_cls",
-            "/sys/fs/cgroup/cpu,cpuacct",
-            "/sys/fs/cgroup/hugetlb",
             "/sys/fs/cgroup/freezer",
+            "/sys/fs/cgroup/net_cls",
+            "/sys/fs/cgroup/hugetlb",
             "/sys/fs/cgroup/blkio",
-            "/sys/fs/cgroup/memory"
+            "/sys/fs/cgroup/cpu,cpuacct",
+            "/sys/fs/cgroup/memory",
+            "/sys/fs/cgroup/perf_event",
+            "/sys/fs/cgroup/cpuset"
           ]
         },
         "pstore": {
@@ -298,15 +298,15 @@
             "/proc/sys/fs/binfmt_misc"
           ]
         },
-        "mqueue": {
-          "fs_type": "mqueue",
+        "hugetlbfs": {
+          "fs_type": "hugetlbfs",
           "mount_options": [
             "rw",
             "relatime",
             "seclabel"
           ],
           "mounts": [
-            "/dev/mqueue"
+            "/dev/hugepages"
           ]
         },
         "debugfs": {
@@ -319,15 +319,15 @@
             "/sys/kernel/debug"
           ]
         },
-        "hugetlbfs": {
-          "fs_type": "hugetlbfs",
+        "mqueue": {
+          "fs_type": "mqueue",
           "mount_options": [
             "rw",
             "relatime",
             "seclabel"
           ],
           "mounts": [
-            "/dev/hugepages"
+            "/dev/mqueue"
           ]
         },
         "nfsd": {
@@ -358,12 +358,12 @@
       "by_mountpoint": {
         "/": {
           "kb_size": "20960236",
-          "kb_used": "6476596",
-          "kb_available": "14483640",
+          "kb_used": "6478620",
+          "kb_available": "14481616",
           "percent_used": "31%",
           "total_inodes": "20970432",
-          "inodes_used": "143602",
-          "inodes_available": "20826830",
+          "inodes_used": "143772",
+          "inodes_available": "20826660",
           "inodes_percent_used": "1%",
           "fs_type": "rootfs",
           "mount_options": [
@@ -419,12 +419,12 @@
         },
         "/run": {
           "kb_size": "507672",
-          "kb_used": "12976",
-          "kb_available": "494696",
+          "kb_used": "13008",
+          "kb_available": "494664",
           "percent_used": "3%",
           "total_inodes": "126918",
-          "inodes_used": "322",
-          "inodes_available": "126596",
+          "inodes_used": "332",
+          "inodes_available": "126586",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -584,6 +584,91 @@
             "cgroup"
           ]
         },
+        "/sys/fs/cgroup/freezer": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "freezer"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
+        "/sys/fs/cgroup/net_cls": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "net_cls"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
+        "/sys/fs/cgroup/hugetlb": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "hugetlb"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
+        "/sys/fs/cgroup/blkio": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "blkio"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
+        "/sys/fs/cgroup/cpu,cpuacct": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "cpuacct",
+            "cpu"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
+        "/sys/fs/cgroup/memory": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "memory"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
         "/sys/fs/cgroup/perf_event": {
           "fs_type": "cgroup",
           "mount_options": [
@@ -607,91 +692,6 @@
             "noexec",
             "relatime",
             "cpuset"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/net_cls": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "net_cls"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/cpu,cpuacct": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "cpuacct",
-            "cpu"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/hugetlb": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "hugetlb"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/freezer": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "freezer"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/blkio": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "blkio"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/memory": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "memory"
           ],
           "devices": [
             "cgroup"
@@ -743,15 +743,15 @@
             "systemd-1"
           ]
         },
-        "/dev/mqueue": {
-          "fs_type": "mqueue",
+        "/dev/hugepages": {
+          "fs_type": "hugetlbfs",
           "mount_options": [
             "rw",
             "relatime",
             "seclabel"
           ],
           "devices": [
-            "mqueue"
+            "hugetlbfs"
           ]
         },
         "/sys/kernel/debug": {
@@ -764,15 +764,15 @@
             "debugfs"
           ]
         },
-        "/dev/hugepages": {
-          "fs_type": "hugetlbfs",
+        "/dev/mqueue": {
+          "fs_type": "mqueue",
           "mount_options": [
             "rw",
             "relatime",
             "seclabel"
           ],
           "devices": [
-            "hugetlbfs"
+            "mqueue"
           ]
         },
         "/proc/fs/nfsd": {
@@ -790,13 +790,13 @@
         "/dev/xvda1,/": {
           "device": "/dev/xvda1",
           "kb_size": "20960236",
-          "kb_used": "6476596",
-          "kb_available": "14483640",
+          "kb_used": "6478620",
+          "kb_available": "14481616",
           "percent_used": "31%",
           "mount": "/",
           "total_inodes": "20970432",
-          "inodes_used": "143602",
-          "inodes_available": "20826830",
+          "inodes_used": "143772",
+          "inodes_available": "20826660",
           "inodes_percent_used": "1%",
           "fs_type": "xfs",
           "mount_options": [
@@ -852,13 +852,13 @@
         "tmpfs,/run": {
           "device": "tmpfs",
           "kb_size": "507672",
-          "kb_used": "12976",
-          "kb_available": "494696",
+          "kb_used": "13008",
+          "kb_available": "494664",
           "percent_used": "3%",
           "mount": "/run",
           "total_inodes": "126918",
-          "inodes_used": "322",
-          "inodes_available": "126596",
+          "inodes_used": "332",
+          "inodes_available": "126586",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -1006,6 +1006,85 @@
             "devices"
           ]
         },
+        "cgroup,/sys/fs/cgroup/freezer": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/freezer",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "freezer"
+          ]
+        },
+        "cgroup,/sys/fs/cgroup/net_cls": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/net_cls",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "net_cls"
+          ]
+        },
+        "cgroup,/sys/fs/cgroup/hugetlb": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/hugetlb",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "hugetlb"
+          ]
+        },
+        "cgroup,/sys/fs/cgroup/blkio": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/blkio",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "blkio"
+          ]
+        },
+        "cgroup,/sys/fs/cgroup/cpu,cpuacct": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/cpu,cpuacct",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "cpuacct",
+            "cpu"
+          ]
+        },
+        "cgroup,/sys/fs/cgroup/memory": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/memory",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "memory"
+          ]
+        },
         "cgroup,/sys/fs/cgroup/perf_event": {
           "device": "cgroup",
           "mount": "/sys/fs/cgroup/perf_event",
@@ -1030,85 +1109,6 @@
             "noexec",
             "relatime",
             "cpuset"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/net_cls": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/net_cls",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "net_cls"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/cpu,cpuacct": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/cpu,cpuacct",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "cpuacct",
-            "cpu"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/hugetlb": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/hugetlb",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "hugetlb"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/freezer": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/freezer",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "freezer"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/blkio": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/blkio",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "blkio"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/memory": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/memory",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "memory"
           ]
         },
         "configfs,/sys/kernel/config": {
@@ -1153,10 +1153,10 @@
             "direct"
           ]
         },
-        "mqueue,/dev/mqueue": {
-          "device": "mqueue",
-          "mount": "/dev/mqueue",
-          "fs_type": "mqueue",
+        "hugetlbfs,/dev/hugepages": {
+          "device": "hugetlbfs",
+          "mount": "/dev/hugepages",
+          "fs_type": "hugetlbfs",
           "mount_options": [
             "rw",
             "relatime",
@@ -1172,10 +1172,10 @@
             "relatime"
           ]
         },
-        "hugetlbfs,/dev/hugepages": {
-          "device": "hugetlbfs",
-          "mount": "/dev/hugepages",
-          "fs_type": "hugetlbfs",
+        "mqueue,/dev/mqueue": {
+          "device": "mqueue",
+          "mount": "/dev/mqueue",
+          "fs_type": "mqueue",
           "mount_options": [
             "rw",
             "relatime",
@@ -1208,12 +1208,12 @@
       "by_device": {
         "/dev/xvda1": {
           "kb_size": "20960236",
-          "kb_used": "6476596",
-          "kb_available": "14483640",
+          "kb_used": "6478620",
+          "kb_available": "14481616",
           "percent_used": "31%",
           "total_inodes": "20970432",
-          "inodes_used": "143602",
-          "inodes_available": "20826830",
+          "inodes_used": "143772",
+          "inodes_available": "20826660",
           "inodes_percent_used": "1%",
           "fs_type": "xfs",
           "mount_options": [
@@ -1343,19 +1343,19 @@
             "nodev",
             "noexec",
             "relatime",
-            "memory"
+            "cpuset"
           ],
           "mounts": [
             "/sys/fs/cgroup/systemd",
             "/sys/fs/cgroup/devices",
-            "/sys/fs/cgroup/perf_event",
-            "/sys/fs/cgroup/cpuset",
-            "/sys/fs/cgroup/net_cls",
-            "/sys/fs/cgroup/cpu,cpuacct",
-            "/sys/fs/cgroup/hugetlb",
             "/sys/fs/cgroup/freezer",
+            "/sys/fs/cgroup/net_cls",
+            "/sys/fs/cgroup/hugetlb",
             "/sys/fs/cgroup/blkio",
-            "/sys/fs/cgroup/memory"
+            "/sys/fs/cgroup/cpu,cpuacct",
+            "/sys/fs/cgroup/memory",
+            "/sys/fs/cgroup/perf_event",
+            "/sys/fs/cgroup/cpuset"
           ]
         },
         "pstore": {
@@ -1417,15 +1417,15 @@
             "/proc/sys/fs/binfmt_misc"
           ]
         },
-        "mqueue": {
-          "fs_type": "mqueue",
+        "hugetlbfs": {
+          "fs_type": "hugetlbfs",
           "mount_options": [
             "rw",
             "relatime",
             "seclabel"
           ],
           "mounts": [
-            "/dev/mqueue"
+            "/dev/hugepages"
           ]
         },
         "debugfs": {
@@ -1438,15 +1438,15 @@
             "/sys/kernel/debug"
           ]
         },
-        "hugetlbfs": {
-          "fs_type": "hugetlbfs",
+        "mqueue": {
+          "fs_type": "mqueue",
           "mount_options": [
             "rw",
             "relatime",
             "seclabel"
           ],
           "mounts": [
-            "/dev/hugepages"
+            "/dev/mqueue"
           ]
         },
         "nfsd": {
@@ -1477,12 +1477,12 @@
       "by_mountpoint": {
         "/": {
           "kb_size": "20960236",
-          "kb_used": "6476596",
-          "kb_available": "14483640",
+          "kb_used": "6478620",
+          "kb_available": "14481616",
           "percent_used": "31%",
           "total_inodes": "20970432",
-          "inodes_used": "143602",
-          "inodes_available": "20826830",
+          "inodes_used": "143772",
+          "inodes_available": "20826660",
           "inodes_percent_used": "1%",
           "fs_type": "rootfs",
           "mount_options": [
@@ -1538,12 +1538,12 @@
         },
         "/run": {
           "kb_size": "507672",
-          "kb_used": "12976",
-          "kb_available": "494696",
+          "kb_used": "13008",
+          "kb_available": "494664",
           "percent_used": "3%",
           "total_inodes": "126918",
-          "inodes_used": "322",
-          "inodes_available": "126596",
+          "inodes_used": "332",
+          "inodes_available": "126586",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -1703,6 +1703,91 @@
             "cgroup"
           ]
         },
+        "/sys/fs/cgroup/freezer": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "freezer"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
+        "/sys/fs/cgroup/net_cls": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "net_cls"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
+        "/sys/fs/cgroup/hugetlb": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "hugetlb"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
+        "/sys/fs/cgroup/blkio": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "blkio"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
+        "/sys/fs/cgroup/cpu,cpuacct": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "cpuacct",
+            "cpu"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
+        "/sys/fs/cgroup/memory": {
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "memory"
+          ],
+          "devices": [
+            "cgroup"
+          ]
+        },
         "/sys/fs/cgroup/perf_event": {
           "fs_type": "cgroup",
           "mount_options": [
@@ -1726,91 +1811,6 @@
             "noexec",
             "relatime",
             "cpuset"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/net_cls": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "net_cls"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/cpu,cpuacct": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "cpuacct",
-            "cpu"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/hugetlb": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "hugetlb"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/freezer": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "freezer"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/blkio": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "blkio"
-          ],
-          "devices": [
-            "cgroup"
-          ]
-        },
-        "/sys/fs/cgroup/memory": {
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "memory"
           ],
           "devices": [
             "cgroup"
@@ -1862,15 +1862,15 @@
             "systemd-1"
           ]
         },
-        "/dev/mqueue": {
-          "fs_type": "mqueue",
+        "/dev/hugepages": {
+          "fs_type": "hugetlbfs",
           "mount_options": [
             "rw",
             "relatime",
             "seclabel"
           ],
           "devices": [
-            "mqueue"
+            "hugetlbfs"
           ]
         },
         "/sys/kernel/debug": {
@@ -1883,15 +1883,15 @@
             "debugfs"
           ]
         },
-        "/dev/hugepages": {
-          "fs_type": "hugetlbfs",
+        "/dev/mqueue": {
+          "fs_type": "mqueue",
           "mount_options": [
             "rw",
             "relatime",
             "seclabel"
           ],
           "devices": [
-            "hugetlbfs"
+            "mqueue"
           ]
         },
         "/proc/fs/nfsd": {
@@ -1909,13 +1909,13 @@
         "/dev/xvda1,/": {
           "device": "/dev/xvda1",
           "kb_size": "20960236",
-          "kb_used": "6476596",
-          "kb_available": "14483640",
+          "kb_used": "6478620",
+          "kb_available": "14481616",
           "percent_used": "31%",
           "mount": "/",
           "total_inodes": "20970432",
-          "inodes_used": "143602",
-          "inodes_available": "20826830",
+          "inodes_used": "143772",
+          "inodes_available": "20826660",
           "inodes_percent_used": "1%",
           "fs_type": "xfs",
           "mount_options": [
@@ -1971,13 +1971,13 @@
         "tmpfs,/run": {
           "device": "tmpfs",
           "kb_size": "507672",
-          "kb_used": "12976",
-          "kb_available": "494696",
+          "kb_used": "13008",
+          "kb_available": "494664",
           "percent_used": "3%",
           "mount": "/run",
           "total_inodes": "126918",
-          "inodes_used": "322",
-          "inodes_available": "126596",
+          "inodes_used": "332",
+          "inodes_available": "126586",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -2125,6 +2125,85 @@
             "devices"
           ]
         },
+        "cgroup,/sys/fs/cgroup/freezer": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/freezer",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "freezer"
+          ]
+        },
+        "cgroup,/sys/fs/cgroup/net_cls": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/net_cls",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "net_cls"
+          ]
+        },
+        "cgroup,/sys/fs/cgroup/hugetlb": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/hugetlb",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "hugetlb"
+          ]
+        },
+        "cgroup,/sys/fs/cgroup/blkio": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/blkio",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "blkio"
+          ]
+        },
+        "cgroup,/sys/fs/cgroup/cpu,cpuacct": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/cpu,cpuacct",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "cpuacct",
+            "cpu"
+          ]
+        },
+        "cgroup,/sys/fs/cgroup/memory": {
+          "device": "cgroup",
+          "mount": "/sys/fs/cgroup/memory",
+          "fs_type": "cgroup",
+          "mount_options": [
+            "rw",
+            "nosuid",
+            "nodev",
+            "noexec",
+            "relatime",
+            "memory"
+          ]
+        },
         "cgroup,/sys/fs/cgroup/perf_event": {
           "device": "cgroup",
           "mount": "/sys/fs/cgroup/perf_event",
@@ -2149,85 +2228,6 @@
             "noexec",
             "relatime",
             "cpuset"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/net_cls": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/net_cls",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "net_cls"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/cpu,cpuacct": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/cpu,cpuacct",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "cpuacct",
-            "cpu"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/hugetlb": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/hugetlb",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "hugetlb"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/freezer": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/freezer",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "freezer"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/blkio": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/blkio",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "blkio"
-          ]
-        },
-        "cgroup,/sys/fs/cgroup/memory": {
-          "device": "cgroup",
-          "mount": "/sys/fs/cgroup/memory",
-          "fs_type": "cgroup",
-          "mount_options": [
-            "rw",
-            "nosuid",
-            "nodev",
-            "noexec",
-            "relatime",
-            "memory"
           ]
         },
         "configfs,/sys/kernel/config": {
@@ -2272,10 +2272,10 @@
             "direct"
           ]
         },
-        "mqueue,/dev/mqueue": {
-          "device": "mqueue",
-          "mount": "/dev/mqueue",
-          "fs_type": "mqueue",
+        "hugetlbfs,/dev/hugepages": {
+          "device": "hugetlbfs",
+          "mount": "/dev/hugepages",
+          "fs_type": "hugetlbfs",
           "mount_options": [
             "rw",
             "relatime",
@@ -2291,10 +2291,10 @@
             "relatime"
           ]
         },
-        "hugetlbfs,/dev/hugepages": {
-          "device": "hugetlbfs",
-          "mount": "/dev/hugepages",
-          "fs_type": "hugetlbfs",
+        "mqueue,/dev/mqueue": {
+          "device": "mqueue",
+          "mount": "/dev/mqueue",
+          "fs_type": "mqueue",
           "mount_options": [
             "rw",
             "relatime",
@@ -2343,12 +2343,12 @@
           "size": "18773",
           "refcount": "0"
         },
-        "i2c_piix4": {
-          "size": "22106",
-          "refcount": "0"
-        },
         "pcspkr": {
           "size": "12718",
+          "refcount": "0"
+        },
+        "i2c_piix4": {
+          "size": "22106",
           "refcount": "0"
         },
         "parport_pc": {
@@ -2391,11 +2391,6 @@
           "size": "12644",
           "refcount": "1"
         },
-        "ata_generic": {
-          "size": "12910",
-          "refcount": "0",
-          "version": "0.2.15"
-        },
         "crct10dif_pclmul": {
           "size": "14289",
           "refcount": "0"
@@ -2412,19 +2407,9 @@
           "size": "22079",
           "refcount": "1"
         },
-        "pata_acpi": {
-          "size": "13038",
-          "refcount": "0",
-          "version": "0.2.3"
-        },
         "ghash_clmulni_intel": {
           "size": "13259",
           "refcount": "0"
-        },
-        "scsi_transport_iscsi": {
-          "size": "99909",
-          "refcount": "0",
-          "version": "2.0-870"
         },
         "cirrus": {
           "size": "24694",
@@ -2450,6 +2435,16 @@
           "size": "93441",
           "refcount": "1"
         },
+        "ata_generic": {
+          "size": "12910",
+          "refcount": "0",
+          "version": "0.2.15"
+        },
+        "pata_acpi": {
+          "size": "13038",
+          "refcount": "0",
+          "version": "0.2.3"
+        },
         "8021q": {
           "size": "29022",
           "refcount": "0",
@@ -2471,11 +2466,6 @@
           "size": "18542",
           "refcount": "1"
         },
-        "ata_piix": {
-          "size": "35038",
-          "refcount": "0",
-          "version": "2.13"
-        },
         "aesni_intel": {
           "size": "69884",
           "refcount": "0"
@@ -2483,10 +2473,6 @@
         "lrw": {
           "size": "13286",
           "refcount": "1"
-        },
-        "xen_blkfront": {
-          "size": "26971",
-          "refcount": "2"
         },
         "gf128mul": {
           "size": "14951",
@@ -2496,6 +2482,14 @@
           "size": "13990",
           "refcount": "1"
         },
+        "xen_netfront": {
+          "size": "26720",
+          "refcount": "0"
+        },
+        "xen_blkfront": {
+          "size": "26971",
+          "refcount": "2"
+        },
         "ablk_helper": {
           "size": "13597",
           "refcount": "1"
@@ -2504,18 +2498,19 @@
           "size": "20359",
           "refcount": "3"
         },
-        "xen_netfront": {
-          "size": "26720",
-          "refcount": "0"
+        "drm": {
+          "size": "349210",
+          "refcount": "4"
+        },
+        "ata_piix": {
+          "size": "35038",
+          "refcount": "0",
+          "version": "2.13"
         },
         "libata": {
           "size": "218730",
           "refcount": "3",
           "version": "3.00"
-        },
-        "drm": {
-          "size": "349210",
-          "refcount": "4"
         },
         "serio_raw": {
           "size": "13462",
@@ -2528,6 +2523,11 @@
         "floppy": {
           "size": "69417",
           "refcount": "0"
+        },
+        "scsi_transport_iscsi": {
+          "size": "99909",
+          "refcount": "0",
+          "version": "2.0-870"
         },
         "sunrpc": {
           "size": "300464",
@@ -2564,23 +2564,23 @@
         "surplus": "0"
       },
       "total": "1015348kB",
-      "free": "182692kB",
+      "free": "394028kB",
       "buffers": "2088kB",
-      "cached": "398096kB",
-      "active": "451556kB",
-      "inactive": "221276kB",
-      "dirty": "1420kB",
+      "cached": "269708kB",
+      "active": "246356kB",
+      "inactive": "209640kB",
+      "dirty": "20kB",
       "writeback": "0kB",
-      "anon_pages": "272668kB",
-      "mapped": "43520kB",
-      "slab": "106952kB",
-      "slab_reclaimable": "77092kB",
-      "slab_unreclaim": "29860kB",
-      "page_tables": "6536kB",
+      "anon_pages": "184220kB",
+      "mapped": "43952kB",
+      "slab": "98476kB",
+      "slab_reclaimable": "65260kB",
+      "slab_unreclaim": "33216kB",
+      "page_tables": "5528kB",
       "nfs_unstable": "0kB",
       "bounce": "0kB",
       "commit_limit": "2604820kB",
-      "committed_as": "694368kB",
+      "committed_as": "567568kB",
       "vmalloc_total": "34359738367kB",
       "vmalloc_used": "12832kB",
       "vmalloc_chunk": "34359722236kB",
@@ -2747,16 +2747,16 @@
           "eth0": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "2004729",
-              "packets": "14884",
+              "bytes": "3868520",
+              "packets": "23540",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "13605912",
-              "packets": "20954",
+              "bytes": "5984368",
+              "packets": "22186",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -2776,10 +2776,10 @@
     "platform": "centos",
     "platform_version": "7.4.1708",
     "platform_family": "rhel",
-    "uptime_seconds": 6107,
-    "uptime": "1 hours 41 minutes 47 seconds",
-    "idletime_seconds": 6051,
-    "idletime": "1 hours 40 minutes 51 seconds",
+    "uptime_seconds": 19795,
+    "uptime": "5 hours 29 minutes 55 seconds",
+    "idletime_seconds": 19610,
+    "idletime": "5 hours 26 minutes 50 seconds",
     "virtualization": {
       "systems": {
         "xen": "guest"
@@ -2848,7 +2848,7 @@
             "application_identifier": "BIOS Information",
             "Vendor": "Xen",
             "Version": "4.2.amazon",
-            "Release Date": "02/16/2017",
+            "Release Date": "08/24/2006",
             "Address": "0xE8000",
             "Runtime Size": "96 kB",
             "ROM Size": "64 kB",
@@ -2862,7 +2862,7 @@
         ],
         "vendor": "Xen",
         "version": "4.2.amazon",
-        "release_date": "02/16/2017",
+        "release_date": "08/24/2006",
         "address": "0xE8000",
         "runtime_size": "96 kB",
         "rom_size": "64 kB",
@@ -2986,14 +2986,14 @@
           "device_number": "0",
           "interface_id": "eni-5e4a625d",
           "ipv4-associations": {
-            "54.186.50.124": "172.31.109.226"
+            "34.212.178.112": "172.31.109.226"
           },
           "local_hostname": "ip-172-31-109-226.mylabserver.com",
           "local_ipv4s": "172.31.109.226",
           "mac": "0a:df:a8:29:3b:7c",
           "owner_id": "045981373300",
           "public_hostname": "",
-          "public_ipv4s": "54.186.50.124",
+          "public_ipv4s": "34.212.178.112",
           "security_group_ids": "sg-0de0d668",
           "security_groups": "default",
           "subnet_id": "subnet-85c60adc",
@@ -3007,7 +3007,7 @@
       "product_codes": "aw0evgkw8e5c1q413zgy5pjce",
       "profile": "default-hvm",
       "public_hostname": "",
-      "public_ipv4": "54.186.50.124",
+      "public_ipv4": "34.212.178.112",
       "public_keys_0_openssh_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcyryYPuvdTGclgc0rPFzoJJZrsvIDG7W07T1j2x/zIvrn6uO9lCwKo2iI2n/pheqfTesOw3p24B8OwlLuE4FMm3L/gBJumivV9pzxPdSlggg6AZJw3n8WBXaCvcioKu1j6cuWBwMPKZ0AteeghitHuDLmhHVCls4Z+pedDmE9wub21xz2+ZJSum2s3rYlKdLF9y1E6B6l3xZA0nkNgK5lKctLHVOmIFBkFC68XeObwvlUEfSLbkLiOniX/502aB+bMlu6S6YDnnP5Q2CUkJLB1o17KF7gqNz5DWFg2xgEpEBBXEC0E2cbJm6SetSs5owXE2jFsLYnsSGICnPSwKhb lab_servers_us_west\n",
       "reservation_id": "r-0c96f2b48be3c2c08",
       "security_groups": [
@@ -3020,7 +3020,7 @@
       "availability_zone": "us-west-2c",
       "region": "us-west-2"
     },
-    "json?": "{\n  \"devpayProductCodes\" : null,\n  \"privateIp\" : \"172.31.109.226\",\n  \"availabilityZone\" : \"us-west-2c\",\n  \"version\" : \"2010-08-31\",\n  \"instanceId\" : \"i-03f011fe7e11863d1\",\n  \"billingProducts\" : null,\n  \"instanceType\" : \"t2.micro\",\n  \"architecture\" : \"x86_64\",\n  \"accountId\" : \"045981373300\",\n  \"kernelId\" : null,\n  \"ramdiskId\" : null,\n  \"imageId\" : \"ami-70c03208\",\n  \"pendingTime\" : \"2017-09-23T11:29:38Z\",\n  \"region\" : \"us-west-2\"\n}",
+    "json?": "{\n  \"devpayProductCodes\" : null,\n  \"privateIp\" : \"172.31.109.226\",\n  \"availabilityZone\" : \"us-west-2c\",\n  \"version\" : \"2010-08-31\",\n  \"instanceId\" : \"i-03f011fe7e11863d1\",\n  \"billingProducts\" : null,\n  \"instanceType\" : \"t2.micro\",\n  \"imageId\" : \"ami-70c03208\",\n  \"accountId\" : \"045981373300\",\n  \"architecture\" : \"x86_64\",\n  \"kernelId\" : null,\n  \"ramdiskId\" : null,\n  \"pendingTime\" : \"2017-09-27T06:15:55Z\",\n  \"region\" : \"us-west-2\"\n}",
     "etc": {
       "passwd": {
         "root": {
@@ -3605,7 +3605,7 @@
     "current_user": "root",
     "cloud_v2": {
       "public_ipv4_addrs": [
-        "54.186.50.124"
+        "34.212.178.112"
       ],
       "local_ipv4_addrs": [
         "172.31.109.226"
@@ -3613,12 +3613,12 @@
       "provider": "ec2",
       "public_hostname": "",
       "local_hostname": "ip-172-31-109-226.mylabserver.com",
-      "public_ipv4": "54.186.50.124",
+      "public_ipv4": "34.212.178.112",
       "local_ipv4": "172.31.109.226"
     },
     "cloud": {
       "public_ipv4_addrs": [
-        "54.186.50.124"
+        "34.212.178.112"
       ],
       "local_ipv4_addrs": [
         "172.31.109.226"
@@ -3626,7 +3626,7 @@
       "provider": "ec2",
       "public_hostname": "",
       "local_hostname": "ip-172-31-109-226.mylabserver.com",
-      "public_ipv4": "54.186.50.124",
+      "public_ipv4": "34.212.178.112",
       "local_ipv4": "172.31.109.226"
     },
     "command": {
@@ -3664,7 +3664,7 @@
       "icon_name": "computer-vm",
       "chassis": "vm",
       "machine_id": "f9afeb75a5a382dce8269887a67fbf58",
-      "boot_id": "b331cc3ee7ab4d59836a13818e4e3f96",
+      "boot_id": "7ee283d255b7476fa8f30cfa00a17baf",
       "virtualization": "xen",
       "operating_system": "CentOS Linux 7 (Core)",
       "cpe_os_name": "cpe",
@@ -3674,8 +3674,14 @@
     "machine_id": "f9afeb75a5a382dce8269887a67fbf58",
     "sessions": {
       "by_session": {
-        "7": {
-          "session": "7",
+        "3": {
+          "session": "3",
+          "uid": "1001",
+          "user": "user",
+          "seat": null
+        },
+        "225": {
+          "session": "225",
           "uid": "1001",
           "user": "user",
           "seat": null
@@ -3684,7 +3690,13 @@
       "by_user": {
         "user": [
           {
-            "session": "7",
+            "session": "3",
+            "uid": "1001",
+            "user": "user",
+            "seat": null
+          },
+          {
+            "session": "225",
             "uid": "1001",
             "user": "user",
             "seat": null
@@ -3733,7 +3745,7 @@
       "search-state-factory": "/usr/local/share/factory/var",
       "search-configuration": "/root/.config"
     },
-    "ohai_time": 1506172307.6526446,
+    "ohai_time": 1506512774.8594644,
     "packages": {
       "libcurl": {
         "epoch": "0",
@@ -9046,7 +9058,7 @@
       "ULONG_MAX": 18446744073709551615,
       "USHRT_MAX": 65535,
       "WORD_BIT": 32,
-      "_AVPHYS_PAGES": 44741,
+      "_AVPHYS_PAGES": 75692,
       "_NPROCESSORS_CONF": 1,
       "_NPROCESSORS_ONLN": 1,
       "_PHYS_PAGES": 253837,

@@ -1,6 +1,6 @@
 name 'apache'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Nitesh bhat'
+maintainer_email 'bhatnitesh@powershell.com'
 license 'All Rights Reserved'
 description 'Installs/Configures apache'
 long_description 'Installs/Configures apache'
